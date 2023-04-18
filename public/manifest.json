@@ -1,0 +1,11 @@
+
+{
+  "name": "Text Converter",
+  "version": "1.0",
+  "description": "Convert selected text to uppercase",
+  "permissions": ["contextMenus"],
+  "background": {
+    "scripts": ["background.js"],
+  },
+  "manifest_version": 2
+}
