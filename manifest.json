@@ -1,19 +1,6 @@
 
-// {
-//   "name": "Text Converter",
-//   "version": "1.0",
-//   "description": "Convert selected text to uppercase",
-//   "permissions": ["contextMenus"],
-//   "background": {
-//     "scripts": ["background.js"],
-//     "persistent": false
-//   },
-//   "manifest_version": 2
-// }
-
-
 {
-  "name": "CaseMate",
+  "name": "CaseChanger",
   "description": "Converts text to snake_case or camelCase in Chrome",
   "version": "1.0",
   "manifest_version": 3,
@@ -23,13 +10,13 @@
   "commands": {
     "convert-snake-case": {
       "suggested_key": {
-        "default": "Cmd+T"
+        "default": "Cmd+Shift+S"
       },
       "description": "Convert selected text to snake_case"
     },
     "convert-camel-case": {
       "suggested_key": {
-        "default": "Cmd+T"
+        "default": "Cmd+Shift+C"
       },
       "description": "Convert selected text to camelCase"
     }
