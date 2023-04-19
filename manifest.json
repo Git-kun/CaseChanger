@@ -2,23 +2,24 @@
 {
   "name": "CaseChanger",
   "description": "Converts text to snake_case or camelCase in Chrome",
-  "version": "1.0",
+  "version": "1.1",
   "manifest_version": 3,
   "background": {
     "service_worker": "background.js"
   },
+  "permissions": ["activeTab"],
+
   "commands": {
     "convert-snake-case": {
-      "suggested_key": {
-        "default": "Cmd+Shift+S"
-      },
+      "shortcut": "shift+S",
       "description": "Convert selected text to snake_case"
     },
     "convert-camel-case": {
-      "suggested_key": {
-        "default": "Cmd+Shift+C"
-      },
+      "shortcut": "shift+C",
       "description": "Convert selected text to camelCase"
     }
+  },
+  "action": {
+    "default_popup": "popup.html"
   }
 }
