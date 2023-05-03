@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function() {
     chrome.tabs.query( {active:true, currentWindow:true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {message: 'getname'}, (content) => {
             if(!content){
-                alert('Cannot Get! Try Reload First!');
+                alert('何かテキストを範囲選択してください！');
                 return;
             }
             // var content = content.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
@@ -25,12 +25,8 @@ document.addEventListener("DOMContentLoaded", function() {
         });
         
     });
-    
 // });
 });
-
-
-// popup.js
 
 // ページがロードされたときに実行される
 window.addEventListener('load', function() {
