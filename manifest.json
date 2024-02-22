@@ -25,8 +25,8 @@
   "commands": {
     "convert_to_camel_case": {
       "suggested_key": {
-        "default": "Ctrl+Shift+Y",
-        "mac": "Command+Shift+Y"
+        "default": "Ctrl+Shift+E",
+        "mac": "Command+Shift+E"
       },
       "description": "Convert selected text to CamelCase"
     }

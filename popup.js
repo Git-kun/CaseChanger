@@ -1,19 +1,22 @@
 // ポップアップが開かれたときに実行される処理
 document.addEventListener("DOMContentLoaded", function() {
+
   // Get Selected Textボタンをクリックしたときの処理
 // document.getElementById('btn_get').addEventListener('click', () => {
+
     chrome.tabs.query( {active:true, currentWindow:true}, (tabs) => {
         chrome.tabs.sendMessage(tabs[0].id, {message: 'getname'}, (content) => {
             if(!content){
-                alert('何かテキストを範囲選択してください！');
+                alert('何かテキストを範囲選択してください。');
                 return;
             }
-            // var content = content.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+
+            var content = content.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
             var str0 = content.replace(/\s+/g, "-");
             var str1 = content.replace(/\s+/g, "_");
             var str2 = content.replace(/\s+/g, "");
-            var str3 = content.toUpperCase();
-            var str4 = content.toLowerCase();
+            var str3 = content.toUpperCase(); //全て大文字に変換
+            var str4 = content.toLowerCase(); //全て小文字に変換
             // 処理後の値をdatで表示する
             document.getElementById("dat0").value = str0;
             document.getElementById("dat1").value = str1;
