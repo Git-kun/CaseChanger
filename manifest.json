@@ -9,9 +9,8 @@
   },
   
 
-  "permissions": [
-    "activeTab"
-  ],
+  "permissions": ["activeTab", "contextMenus"],
+
   "background.service_worker": {
     "scripts": ["background.js"],
     "persistent": false
@@ -23,12 +22,12 @@
     }
   ],
   "commands": {
-    "convert_to_camel_case": {
+    "convert-text": {
       "suggested_key": {
-        "default": "Ctrl+Shift+E",
-        "mac": "Command+Shift+E"
+        "default": "Ctrl+Shift+Y",
+        "mac": "Command+Shift+Y"
       },
-      "description": "Convert selected text to CamelCase"
+      "description": "Convert selected text"
     }
   }
 
