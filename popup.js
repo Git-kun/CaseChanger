@@ -5,31 +5,56 @@ document.addEventListener("DOMContentLoaded", function() {
 // document.getElementById('btn_get').addEventListener('click', () => {
 
     chrome.tabs.query( {active:true, currentWindow:true}, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, {message: 'getname'}, (content) => {
-            if(!content){
-                alert('何かテキストを範囲選択してください。');
-                return;
+        chrome.tabs.sendMessage(tabs[0].id, {action: 'getSelectedText'}, function(response) {
+
+            if (response && response.text) {
+                // テキストを変換する関数を呼び出し
+                const convertedText = response.text;
+                // 変換したテキストをポップアップに表示
+                // document.getElementById('convertedText').textContent = convertedText;
+                // document.getElementById("dat2").value = convertedText;
+            } else {
+                // テキストが取得できなかった場合のメッセージ
+                document.getElementById('convertedText').textContent = "テキストが選択されていません";
             }
 
-            var content = content.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
-            var str0 = content.replace(/\s+/g, "-");
-            var str1 = content.replace(/\s+/g, "_");
-            var str2 = content.replace(/\s+/g, "");
-            var str3 = content.toUpperCase(); //全て大文字に変換
-            var str4 = content.toLowerCase(); //全て小文字に変換
+            // document.getElementById('convertedText').textContent = response ? response.text : "テキストが選択されていません";
+
+            text = response.text;
+
+            text = text.replace(/([a-z])([A-Z])/g, '$1-$2').toLowerCase();
+            str0 = text.replace(/\s+/g, "-");
+            str1 = text.replace(/\s+/g, "_");
+            str2 = text.replace(/\s+/g, "");
+            str3 = text.toUpperCase(); //全て大文字に変換
+            str4 = text.toLowerCase(); //全て小文字に変換
             // 処理後の値をdatで表示する
             document.getElementById("dat0").value = str0;
             document.getElementById("dat1").value = str1;
             document.getElementById("dat2").value = str2;
             document.getElementById("dat3").value = str3;
-            document.getElementById("dat4").value = str4;
-            document.getElementById('title').value = content
+            document.getElementById("dat4").value = text;
+            document.getElementById('title').value = text
             
         });
         
     });
 // });
 });
+
+
+// キャメルケースやスペース区切りのテキストをスネークケースに変換する関数
+// function toSnakeCase(str) {
+//   return str
+//       // スペースをアンダースコアに置換
+//       .replace(/\s+/g, '_')
+//       // キャメルケースをスネークケースに置換
+//       .replace(/([A-Z])/g, function($1){return "_"+$1.toLowerCase();})
+//       // 複数のアンダースコアを一つに置換
+//       .replace(/_+/g, '_')
+//       // 先頭のアンダースコアを削除
+//       .replace(/^_/, '');
+// }
 
 // ページがロードされたときに実行される
 window.addEventListener('load', function() {
@@ -58,4 +83,5 @@ window.addEventListener('load', function() {
     // output要素に変換されたテキストを表示する
     outputElement.textContent = `キャメルケース: ${camelCaseText}, ケバブケース: ${kebabCaseText}`;
   });
+
 });

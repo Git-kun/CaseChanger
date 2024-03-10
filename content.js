@@ -1,12 +1,31 @@
-chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
-  // let title = document.querySelector('.style-bw4dop').textContent
+chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+  if (request.action === "convertText") {
+    const selectedText = window.getSelection().toString();
+    console.log('テスト出力', selectedText)
+    if (selectedText) {
+      console.log('テスト出力2', selectedText)
 
-  // 選択されたテキストを取得
+      // 変換結果を送信元（ポップアップなど）に返します。
+      sendResponse({text: convertedText});
+    }
+  }
 
-  let title = window.getSelection().toString();
 
-  // 取得したテキストが空でない場合、sendResponseで返す
-  if (title !== '') {
-    sendResponse(title);
+  if (request.action === 'getSelectedText') {
+    console.log("リクエスト届いた:");
+    const selectedText = window.getSelection().toString();
+    sendResponse({ text: selectedText });
+
+      
+    // // 選択されているテキストがあればそれを応答として返す
+    // if (selectedText) {
+    //   sendResponse(selectedText);
+    // } else {
+    //   // 選択されているテキストがない場合は、適切な応答を返す
+    //   sendResponse('テキストが選択されていません。');
+    // }
+    
+    // 非同期応答を許可するために true を返す
+    // return true;
   }
 });
