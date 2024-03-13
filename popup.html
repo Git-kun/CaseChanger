@@ -2,7 +2,7 @@
 <html>
   <head>
     <meta charset="UTF-8">
-    <title>CamelCase Converter</title>
+    <title>Converter</title>
   </head>
   <body>
     <section>
@@ -34,6 +34,11 @@
       <input type="text" id="result_kebab" placeholder="kebabCase">
       <h2 style="font-size: 12px;">snakeCase</h2>
       <input type="text" id="result_snake" placeholder="snakeCase">
+      <div class="shortcut-instructions">
+          <h2>ショートカットキーの設定方法</h2>
+          <p>ユーザーが拡張機能のショートカットを設定するには、Chromeの設定ページで拡張機能のショートカットをカスタマイズできます。</p>
+          <a href="#" onclick="chrome.tabs.create({'url': 'brave://extensions/shortcuts'}); return false;">ショートカット設定ページを開く</a>
+      </div>
   
       <!-- <button id="btn_get">get</button> -->
       <!-- <output id="output"></output> -->

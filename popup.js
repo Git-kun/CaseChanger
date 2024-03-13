@@ -10,6 +10,7 @@ document.addEventListener("DOMContentLoaded", function() {
             if (response && response.text) {
                 // テキストを変換する関数を呼び出し
                 const convertedText = response.text;
+                console.log('選択したテキストを取得！！')
                 // 変換したテキストをポップアップに表示
                 // document.getElementById('convertedText').textContent = convertedText;
                 // document.getElementById("dat2").value = convertedText;
