@@ -2,7 +2,6 @@ document.addEventListener("DOMContentLoaded", function() {
   chrome.tabs.query({active: true, currentWindow: true}, (tabs) => {
       chrome.tabs.sendMessage(tabs[0].id, {action: 'getSelectedText'}, function(response) {
           if (response && response.text) {
-              console.log('選択したテキストを取得！！');
               updateTextFields(response.text); // 最初のテキスト変換とフィールド更新
           } else {
               document.getElementById('convertedText').textContent = "テキストが選択されていません";
