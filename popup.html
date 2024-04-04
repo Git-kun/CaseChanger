@@ -1,35 +1,84 @@
 <!DOCTYPE html>
 <html>
-  <head>
+<head>
     <meta charset="UTF-8">
-    <title>Converter</title>
-  </head>
-  <body>
+    <title>Case Changer</title>
+    <style>
+      h1 {
+        color: #FFA500;
+        font-size: 2em;
+        text-align: center;
+        font-weight: bold;
+        text-shadow:
+          2px 2px 0px #004c8c,
+          -1px -1px 0 #FFFFFF,
+          1px -1px 0 #FFFFFF,
+          -1px  1px 0 #FFFFFF,
+          1px  1px 0 #FFFFFF;
+      }
+      body {
+          margin: 0;
+          padding: 0;
+          font-family: Arial, sans-serif;
+      }
+
+      section {
+          width: 200px;
+          padding: 10px;
+          background-color: #fff;
+          box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+          border-radius: 8px;
+      }
+
+      label {
+          display: block;
+          margin-top: 5px;
+          color: #333;
+      }
+
+      input[type="text"] {
+          width: calc(100% - 20px);
+          margin-top: 5px;
+          margin-bottom: 10px;
+          padding: 5px;
+          border: 1px solid #ddd;
+          border-radius: 4px;
+          box-sizing: border-box;
+      }
+
+      input[type="text"]:focus {
+          border-color: #0056b3;
+          outline: none;
+      }
+  </style>
+</head>
+<body>
     <section>
-      <h1>Case Changer</h1>
-      <input type="text" id="inputText">
-      <h3 style="font-size: 12px; margin-bottom: 0;">キャメルケース↓</h3>
-      <input type="text" id="camelCase" placeholder="キャメルケース">
-      <h3 style="font-size: 12px; margin-bottom: 0;">スネークケース↓</h3>
-      <input type="text" id="snakeCase" placeholder="空白を_に変換">
-      <h3 style="font-size: 12px; margin-bottom: 0;">ケバブケース↓</h3>
-      <input type="text" id="kebabCase" placeholder="空白を-に変換">
-      <h3 style="font-size: 12px; margin-bottom: 0;">パスカルケース↓</h3>
-      <input type="text" id="pascalCase" placeholder="パスカルケースに変換">
-      <h3 style="font-size: 12px; margin-bottom: 0;">空白削除↓</h3>
-      <input type="text" id="removeSpaces" placeholder="空白削除">
-      <h3 style="font-size: 12px; margin-bottom: 0;">大文字変換↓</h3>
-      <input type="text" id="toUpperCase" placeholder="大文字変換">
-      <h3 style="font-size: 12px; margin-bottom: 0;">小文字変換↓</h3>
-      <input type="text" id="toLowerCase" placeholder="大文字変換">
+        <h1>Case Changer</h1>
+        <label id="inputTextLabel" for="inputText">Enter your text here:</label>
+        <input type="text" id="inputText" placeholder="Example: hello world">
 
-      <!-- <div class="shortcut-instructions">
-          <h2>ショートカットキーの設定方法</h2>
-          <p>ユーザーが拡張機能のショートカットを設定するには、Chromeの設定ページで拡張機能のショートカットをカスタマイズできます。</p>
-          <a href="#" onclick="chrome.tabs.create({'url': 'brave://extensions/shortcuts'}); return false;">ショートカット設定ページを開く</a>
-      </div> -->
+        <label for="camelCase">Camel Case:</label>
+        <input type="text" id="camelCase" placeholder="example: helloWorld">
+
+        <label for="snakeCase">Snake Case:</label>
+        <input type="text" id="snakeCase" placeholder="example: hello_world">
+
+        <label for="kebabCase">Kebab Case:</label>
+        <input type="text" id="kebabCase" placeholder="example: hello-world">
+
+        <label for="pascalCase">Pascal Case:</label>
+        <input type="text" id="pascalCase" placeholder="example: HelloWorld">
+
+        <label for="removeSpaces">Remove Spaces:</label>
+        <input type="text" id="removeSpaces" placeholder="example: helloworld">
+
+        <label for="toUpperCase">UPPER CASE:</label>
+        <input type="text" id="toUpperCase" placeholder="example: HELLO WORLD">
+
+        <label for="toLowerCase">lower case:</label>
+        <input type="text" id="toLowerCase" placeholder="example: hello world">
     </section>
-
     <script src="popup.js"></script>
-  </body>
+</body>
 </html>
