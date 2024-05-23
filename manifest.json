@@ -1,7 +1,7 @@
 
 {
   "name": "CaseChanger",
-  "description": "Converts text to snake_case or camelCase in Chrome",
+  "description": "Chromeでテキストをスネークケースやキャメルケースなどに変換",
   "version": "1.0",
   "manifest_version": 3,
   "icons": {
