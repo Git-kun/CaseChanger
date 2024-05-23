@@ -1,4 +1,4 @@
-chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
+chrome.runtime.onMessage.addListener(function(request, sendResponse) {
   if (request.action === "convertText") {
     const selectedText = window.getSelection().toString();
     if (selectedText) {
