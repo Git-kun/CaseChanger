@@ -1,9 +1,26 @@
 document.addEventListener("DOMContentLoaded", function () {
     chrome.tabs.query({ active: true, currentWindow: true }, (tabs) => {
-        chrome.tabs.sendMessage(tabs[0].id, { action: 'getSelectedText' }, function (response) {
-            if (response && response.text) {
-                updateTextFields(response.text);
+        if (chrome.runtime.lastError) {
+            console.error(chrome.runtime.lastError.message);
+            return;
+        }
+
+        chrome.scripting.executeScript({
+            target: { tabId: tabs[0].id },
+            files: ['content.js']
+        }, () => {
+            if (chrome.runtime.lastError) {
+                console.error(chrome.runtime.lastError.message);
+                return;
             }
+
+            chrome.tabs.sendMessage(tabs[0].id, { action: 'getSelectedText' }, function (response) {
+                if (response && response.text) {
+                    updateTextFields(response.text);
+                } else {
+                    console.error("No text selected or unable to retrieve text.");
+                }
+            });
         });
     });
 
@@ -23,14 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("pascalCase").value = toPascalCase(trimmedText);
     }
 
-
     function toKebabCase(text) {
         return text
             .replace(/([a-z])([A-Z])/g, '$1-$2')
             .replace(/[_\s]+/g, '-')
             .toLowerCase();
     }
-
 
     function toSnakeCase(text) {
         return text
@@ -40,7 +55,6 @@ document.addEventListener("DOMContentLoaded", function () {
             .replace(/^_/, '')
             .toLowerCase();
     }
-
 
     function removeSpaces(text) {
         return text.replace(/\s+/g, "");
